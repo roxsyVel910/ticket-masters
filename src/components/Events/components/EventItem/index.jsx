@@ -1,9 +1,11 @@
-const EventItem = () => {
+const EventItem = ({ info, name, image }) => {
     return (
         <div>
-            <h1>EventItem</h1>
+            <img src={image} alt={name} />
+            <h4>{name}</h4>
+            <p>{info}</p>
         </div>
-    )   
+    )
 }
 
 export default EventItem;
