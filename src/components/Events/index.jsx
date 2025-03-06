@@ -9,6 +9,7 @@ const Events = () => {
     const eventsComponent = events.map((eventItem) => {
         return <EventItem
             key={`event-item-${eventItem.id}`}
+            id={eventItem.id}
             name={eventItem.name}
             info={eventItem.info}
             image={eventItem.images[0].url}
