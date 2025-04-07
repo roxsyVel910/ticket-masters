@@ -13,9 +13,9 @@ console.log(searchTerm, 1000);
 
   return (
     <>
-     {/*<Navbar onSearch={handleNavbatSearch}/>
-     <Events searchTerm={searchTerm} /> */}
-     <SignupForm />
+     <Navbar onSearch={handleNavbatSearch}/>
+     <Events searchTerm={searchTerm} /> 
+    
      
     </>
   )

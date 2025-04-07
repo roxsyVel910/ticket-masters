@@ -1,37 +1,38 @@
-
+import useEventsData from '../../hooks/useEventsData';
 import EventItem from './components/EventItem';
-import data from '../../data/events.json';
-
-const { _embedded: { events } } = data; //desestructuración de objetos
 
 const Events = ({ searchTerm }) => {
-  
-    const handleEventClick = (id) => {
-        console.log('click', id);  
+    const { events } = useEventsData();
+
+    const handleEventItemClick = (id) => {
+        console.log('evento clickeado: ', id);
     };
-    const renderEvent = () => {       
+
+    const renderEvents = () => {
         let eventsFiltered = events;
-        if(searchTerm.length > 0) {
-            eventsFiltered = events.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+        if (searchTerm.length > 0) {
+            eventsFiltered = eventsFiltered.filter((item) => item.name.toLocaleLowerCase().includes(searchTerm));
         }
-        return eventsFiltered.map((eventItem) => {
-            return <EventItem
+        
+        return eventsFiltered.map((eventItem) => (
+            <EventItem
                 key={`event-item-${eventItem.id}`}
-                id={eventItem.id}
                 name={eventItem.name}
                 info={eventItem.info}
                 image={eventItem.images[0].url}
-                onEventClick={handleEventClick}
+                onEventClick={handleEventItemClick}
+                id={eventItem.id}
             />
-        });
-};
+        ));
+    };
+
     return (
         <div>
             Eventos
-            {renderEvent()}
+            {renderEvents()}
         </div>
     );
 };
-
 
 export default Events;
